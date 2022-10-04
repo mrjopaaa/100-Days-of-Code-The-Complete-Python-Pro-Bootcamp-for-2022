@@ -36,6 +36,7 @@ from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
+
 is_off = False
 
 while not is_off:
@@ -43,14 +44,21 @@ while not is_off:
     if user_input == "off":
         print("Turning off machine...")
         is_off = True
-    elif user_input == "report":
+    if user_input == "report":
         coffee_maker = CoffeeMaker()
         print(coffee_maker.report())
+        money_machine = MoneyMachine()
+        money_machine.report()
         # print(f"Money: ${MoneyMachine.report()}")
     else:
-        drink_ingredients = Menu()
-        if drink_ingredients.get_items():
-            print(drink_ingredients.menu)
+        menu = Menu()
+        process_payment = MoneyMachine()
+        make_coffee = CoffeeMaker()
+        if menu.find_drink(order_name=user_input):
+            if process_payment.make_payment(menu.find_drink(order_name=user_input).cost):
+                if make_coffee.is_resource_sufficient(menu.find_drink(order_name=user_input)):
+                    make_coffee.make_coffee(menu.find_drink(order_name=user_input))
+
     #         if money_for_calculation >= drink_ingredients["cost"]:
     #             change_money = round(money_for_calculation - drink_ingredients["cost"],2)
     #             make_coffee(user_input, drink_ingredients["ingredients"])
