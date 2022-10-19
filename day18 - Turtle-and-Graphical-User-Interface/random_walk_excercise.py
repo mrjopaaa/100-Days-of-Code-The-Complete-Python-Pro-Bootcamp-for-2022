@@ -2,14 +2,14 @@ import turtle as t
 import random
 from turtle import Screen
 
-
-
 ########### Challenge 4 - Random Walk ########
-#colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+# colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+
 
 tim = t.Turtle()
 t.colormode(255)
 tim.speed("fastest")
+
 
 def random_color():
     r = random.randint(0, 255)
@@ -19,6 +19,7 @@ def random_color():
     print(color)
     return color
 
+
 ########### Challenge 5 - Spirograph ########
 
 def draw_spirograph(size_of_gap):
@@ -27,5 +28,5 @@ def draw_spirograph(size_of_gap):
         tim.circle(100)
         tim.setheading(tim.heading() + size_of_gap)
 
-draw_spirograph(5)
 
+draw_spirograph(5)
